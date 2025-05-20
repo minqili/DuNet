@@ -54,7 +54,7 @@ More specifically, it is detailed as follow.
 
 ## System-specific notes
 
-*exclamation: The model in `saved_models/DUNet` can be downloaded from the following baiduyun:*
+*exclamation: The model in `saved_models/DuNet` can be downloaded from the following baiduyun:*
 
 Baiduyun: https://pan.baidu.com/s/1-fSlatkJ_8RC-FPlJeKu1Q?pwd=cqfb  (access code: cqfb)
 

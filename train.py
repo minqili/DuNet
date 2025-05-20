@@ -12,8 +12,8 @@ from data_loader import RescaleT
 from data_loader import RandomCrop
 from data_loader import ToTensorLab
 from data_loader import SalObjDataset
-from model import UIUNET
-from model.memory_module import MemoryBank
+from model.DuNet import DUNET
+from model.Memory_module import MemoryBank
 
 
 if __name__ == '__main__':
@@ -105,7 +105,7 @@ if __name__ == '__main__':
     lr_values = []
 
     # ------- 3. define model --------
-    net = UIUNET(3, 1)
+    net = DUNET(3, 1)
 
     if torch.cuda.is_available():
         net.cuda()

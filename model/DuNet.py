@@ -2,9 +2,8 @@ import torch
 import math
 import torch.nn as nn
 import torch.nn.functional as F
-from .Fusion import *
-from model.attentions import *
-from .Fusion import FuseReduce
+from model.attentions import EMA
+from model.fusion import *
 
 
 class REBNCONV(nn.Module):
@@ -161,22 +160,15 @@ class RSU5(nn.Module):
 
     def __init__(self, in_ch=3, mid_ch=12, out_ch=3):
         super(RSU5, self).__init__()
-
         self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)
-
         self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)
         self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)
-
         self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)
         self.pool2 = nn.MaxPool2d(2, stride=2, ceil_mode=True)
-
         self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=1)
         self.pool3 = nn.MaxPool2d(2, stride=2, ceil_mode=True)
-
         self.rebnconv4 = REBNCONV(mid_ch, mid_ch, dirate=1)
-
         self.rebnconv5 = REBNCONV(mid_ch, mid_ch, dirate=2)
-
         self.rebnconv4d = REBNCONV(mid_ch * 2, mid_ch, dirate=1)
         self.rebnconv3d = REBNCONV(mid_ch * 2, mid_ch, dirate=1)
         self.rebnconv2d = REBNCONV(mid_ch * 2, mid_ch, dirate=1)
@@ -298,10 +290,10 @@ class RSU4F(nn.Module):
         return hx1d + hxin
 
 
-# # ### UIU-net ####
-class UIUNET(nn.Module):
+# # ### DuNet ####
+class DUNET(nn.Module):
     def __init__(self, in_ch=3, out_ch=1):
-        super(UIUNET, self).__init__()
+        super(DUNET, self).__init__()
 
         self.stage1 = RSU7(in_ch, 32, 64)
         self.pool12 = nn.MaxPool2d(2, stride=2, ceil_mode=True)

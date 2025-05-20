@@ -9,9 +9,9 @@ from torchvision import transforms
 from data_loader import RescaleT
 from data_loader import SalObjDataset
 from data_loader import ToTensorLab
-from model import UIUNET
+from model.DuNet import DUNET
 # import torch.optim as optim
-from model.metrics import *
+from model.Metrics import *
 
 
 # normalize the predicted SOD probability map
@@ -81,7 +81,7 @@ def main():    # --------- 1. get image path and name ---------
                                         num_workers=1)
 
     # --------- 3. model define ---------
-    net = UIUNET(3, 1)
+    net = DUNET(3, 1)
 
     if torch.cuda.is_available():
         net.load_state_dict(torch.load(model_dir))

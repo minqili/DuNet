@@ -37,19 +37,19 @@ class SigmoidMetric():
         output = output.detach().numpy()
         target = target.detach().numpy()
 
-        predict = (output > 0.22).astype('int64')  # P  output > 0.22 合成数据0.8
-        pixel_labeled = np.sum(target > 0)  # T
-        pixel_correct = np.sum((predict == target) * (target > 0))  # TP
+        predict = (output > 0.22).astype('int64')  
+        pixel_labeled = np.sum(target > 0)  
+        pixel_correct = np.sum((predict == target) * (target > 0))  
         assert pixel_correct <= pixel_labeled
         return pixel_correct, pixel_labeled
 
     def batch_intersection_union(self, output, target):
         mini = 1
-        maxi = 1  # nclass
-        nbins = 1  # nclass
-        predict = (output.detach().numpy() > 0.22).astype('int64')  # P   ###########阈值，不应该直接>0,会有很小的值 0.22  合成数据0.8
-        target = target.numpy().astype('int64')  # T
-        intersection = predict * (predict == target)  # TP
+        maxi = 1  
+        nbins = 1  
+        predict = (output.detach().numpy() > 0.22).astype('int64')  
+        target = target.numpy().astype('int64') 
+        intersection = predict * (predict == target)  
 
         # areas of intersection and union
         area_inter, _ = np.histogram(intersection, bins=nbins, range=(mini, maxi))

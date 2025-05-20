@@ -49,7 +49,7 @@ class FuseReduce(nn.Module):
             nn.ReLU(True),
         )
 
-        self.topdown = ChannelLayer(self.out_channels)  # 使用 ECA 注意力机制
+        self.topdown = ChannelLayer(self.out_channels) 
 
         self.bottomup = nn.Sequential(
             nn.Conv2d(self.low_channels, self.bottleneck_channels, 1, 1, 0),
@@ -81,7 +81,6 @@ class FuseReduce(nn.Module):
 
 if __name__ == '__main__':
 
-    # 示例用法
     model = FuseReduce(in_high_channels=512, in_low_channels=64)
     xh = torch.randn(1, 512, 16, 16)
     xl = torch.randn(1, 64, 8, 8)

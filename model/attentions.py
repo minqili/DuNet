@@ -28,16 +28,6 @@ class ECA_layer(nn.Module):
 
         return x * y.expand_as(x)
 
-# 示例用法
-if __name__ == "__main__":
-    # 生成一个随机张量，模拟输入：batch size = 4, channels = 64, height = width = 32
-    x = torch.randn(4, 64, 32, 32)
-    # 创建一个 ECA 模块实例，通道数为 64
-    eca = ECA_layer(channel=64)
-    # 通过 ECA 模块调整输入特征
-    y = eca(x)
-    # 打印输出张量的形状，应该与输入相同
-    print(y.shape)  # 输出: torch.Size([4, 64, 32, 32])
 
 class EMA(nn.Module):
     def __init__(self, channels, c2=None, factor=32):
@@ -91,15 +81,4 @@ class EMA(nn.Module):
         weights = (torch.matmul(x11, x12) + torch.matmul(x21, x22)).reshape(b * self.groups, 1, h, w)
 
         return (group_x * weights.sigmoid()).reshape(b, c, h, w)
-
-# 测试代码
-if __name__ == '__main__':
-    # 创建一个 EMA 模块实例，通道数为 64，使用 CUDA 加速。
-    block = EMA(64).cuda()
-    # 生成一个大小为 (1, 64, 64, 64) 的随机张量作为输入，并使用 CUDA 加速。
-    input = torch.rand(1, 64, 64, 64).cuda()
-    # 将输入张量传递给 EMA 模块，计算输出。
-    output = block(input)
-    # 打印输入和输出的形状，确保它们匹配。
-    print(input.size(), output.size())
 

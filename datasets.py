@@ -54,10 +54,10 @@ class DUTSDataset(data.Dataset):
 
 
 if __name__ == '__main__':
-    train_dataset = DUTSDataset("UIU-Net/train_data/DUTS/DUTS-TR/DUTS-TR-Image", train=True)
+    train_dataset = DUTSDataset("DUTS-TR-Image", train=True)
     print(len(train_dataset))
 
-    val_dataset = DUTSDataset("UIU-Net/train_data/DUTS/DUTS-TR/DUTS-TR-Mask", train=False)
+    val_dataset = DUTSDataset("DUTS-TR-Mask", train=False)
     print(len(val_dataset))
 
     i, t = train_dataset[0]

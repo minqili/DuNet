@@ -1,2 +1,2 @@
-from .uiunet import UIUNET
+from .DuNet import DUNET
 
