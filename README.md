@@ -82,9 +82,4 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program.
 
-Contact Information:
---------------------
-
-Minqi Li: hongdanfeng1989@gmail.com<br>
-Minqi Li is with the School of electronic Information, Xi’an Polytechnic University, Xi’an, China.
 
