@@ -1,7 +1,7 @@
 # DuNet:Infrared Small Target Detection based on Dual-path Attention UNet
 ---------------------
 
-The code in this toolbox implements the ["DuNet:Infrared Small Target Detection based on Dual-path Attention UNet"](https://ieeexplore.ieee.org/document/9989433).
+The code in this toolbox implements the ["DuNet:Infrared Small Target Detection based on Dual-path Attention UNet"](https://github.com/minqili/DuNet).
 More specifically, it is detailed as follow.
 
 ![alt text](figures/main.jpg)
